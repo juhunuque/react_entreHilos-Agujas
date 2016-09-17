@@ -1,0 +1,20 @@
+{
+  "name": "react_entreHilosYAgujas",
+  "description": "Project created for the company Entre hilos y agujas",
+  "main": "index.js",
+  "authors": [
+    "Julio N <juhunuque@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/juhunuque/ReduxSimpleStarter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.7"
+  }
+}
