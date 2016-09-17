@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Entre Hilos & Agujas</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -12,55 +12,79 @@
   <link rel="stylesheet" href="/style/style.css">
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+  <header>
+    <!-- Dropdown Lists -->
+    <ul id="dropdownProjects" class="dropdown-content">
+      <li><a href="#/createProject">Creacion de Proyectos</a></li>
+      <li class="divider"></li>
+      <li><a href="#/statusProject">Control de Proyectos</a></li>
+      <li class="divider"></li>
+      <li><a href="#/settingProjects">Mantenimiento Proyecto</a></li>
+    </ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    <ul id="dropdownMaterials" class="dropdown-content">
+      <li><a href="#/manageKindMaterial">Tipo material</a></li>
+      <li class="divider"></li>
+      <li><a href="#/manageMaterial">Material</a></li>
+    </ul>
+
+    <ul id="dropdownSecurity" class="dropdown-content">
+      <li><a href="#/manageUsers">Mantenimiento Usuarios</a></li>
+      <li class="divider"></li>
+      <li><a href="#/manageRoles">Asignacion Roles</a></li>
+      <li class="divider"></li>
+      <li><a href="#/backUpDb">Backup DB</a></li>
+    </ul>
+
+    <ul id="dropdownHelp" class="dropdown-content">
+      <li><a href="#/changePassword">Cambiar Contraseña</a></li>
+      <li class="divider"></li>
+      <li><a href="#/version">Version</a></li>
+      <li class="divider"></li>
+      <li><a href="#/userDocumentation">Manual de Usuario</a></li>
+    </ul>
+
+    <ul id="dropdownReports" class="dropdown-content">
+      <li><a href="#/reportMaterials">Materiales</a></li>
+      <li class="divider"></li>
+      <li><a href="#/reportProjects">Proyectos</a></li>
+    </ul>
+
+    <!-- Dropdown Lists End-->
+    <nav class="light-blue lighten-1" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">
+            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/91308-200.png" alt="Finanzas"  width="45"  />
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+            data-activates="dropdownMaterials" href="#">Materiales</a></li>
+          <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+            data-activates="dropdownProjects" href="#">Proyectos</a></li>
+          <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+            data-activates="dropdownSecurity" href="#">Seguridad</a></li>
+          <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+            data-activates="dropdownHelp" href="#">Ayuda</a></li>
+          <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+            data-activates="dropdownReports" href="#">Listado</a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="#">Navbar Link</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="containerMain">
     </div>
-  </nav>
-
-  <div class="containerMain">
-  </div>
+  </main>
 
   <footer class="page-footer orange">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">
-      Made with <3 by  <a class="orange-text text-lighten-3" href="https://juhunuque.github.io/">Julio Núñez Q.</a>
-      </div>
+        Made with <3 by  <a class="orange-text text-lighten-3" href="https://juhunuque.github.io/">Julio Núñez Q.</a>
     </div>
   </footer>
 
