@@ -7,6 +7,7 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet' type='text/css'>
   <link href="./bower_components/materialize/dist/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="/style/style_template.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="/style/style.css">
@@ -15,33 +16,33 @@
   <header>
     <!-- Dropdown Lists -->
     <ul id="dropdownProjects" class="dropdown-content">
-      <li><a href="#/createProject">Creacion de Proyectos</a></li>
+      <li><a href="/createProject">Creacion de Proyectos</a></li>
       <li class="divider"></li>
-      <li><a href="#/statusProject">Control de Proyectos</a></li>
+      <li><a href="/statusProject">Control de Proyectos</a></li>
       <li class="divider"></li>
-      <li><a href="#/settingProjects">Mantenimiento Proyecto</a></li>
+      <li><a href="/settingProjects">Mantenimiento Proyecto</a></li>
     </ul>
 
     <ul id="dropdownMaterials" class="dropdown-content">
-      <li><a href="#/manageKindMaterial">Tipo material</a></li>
+      <li><a href="/manageKindMaterial">Tipo material</a></li>
       <li class="divider"></li>
-      <li><a href="#/manageMaterial">Material</a></li>
+      <li><a href="/manageMaterial">Material</a></li>
     </ul>
 
     <ul id="dropdownSecurity" class="dropdown-content">
-      <li><a href="#/manageUsers">Mantenimiento Usuarios</a></li>
+      <li><a href="/manageUsers">Mantenimiento Usuarios</a></li>
       <li class="divider"></li>
-      <li><a href="#/manageRoles">Asignacion Roles</a></li>
+      <li><a href="/manageRoles">Asignacion Roles</a></li>
       <li class="divider"></li>
-      <li><a href="#/backUpDb">Backup DB</a></li>
+      <li><a href="/backUpDb">Backup DB</a></li>
     </ul>
 
     <ul id="dropdownHelp" class="dropdown-content">
-      <li><a href="#/changePassword">Cambiar Contraseña</a></li>
+      <li><a href="/changePassword">Cambiar Contraseña</a></li>
       <li class="divider"></li>
-      <li><a href="#/version">Version</a></li>
+      <li><a href="/version">Version</a></li>
       <li class="divider"></li>
-      <li><a href="#/userDocumentation">Manual de Usuario</a></li>
+      <li><a href="/userDocumentation">Manual de Usuario</a></li>
     </ul>
 
     <ul id="dropdownReports" class="dropdown-content">
@@ -51,11 +52,13 @@
     </ul>
 
     <!-- Dropdown Lists End-->
-    <nav class="light-blue lighten-1" role="navigation">
+    <nav class="blue" role="navigation">
       <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">
+        <a id="logo-container" href="/" class="brand-logo">
             <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/91308-200.png" alt="Finanzas"  width="45"  />
         </a>
+        <span class="headerText" style="margin-left:5%;"><a href="/" style="color:#2B2B2B;">Entre Hilos & Agujas</a></span>
+
         <ul class="right hide-on-med-and-down">
           <li><a class="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
             data-activates="dropdownMaterials" href="#">Materiales</a></li>
@@ -82,7 +85,7 @@
     </div>
   </main>
 
-  <footer class="page-footer orange">
+  <footer class="page-footer deep-orange">
     <div class="container">
         Made with <3 by  <a class="orange-text text-lighten-3" href="https://juhunuque.github.io/">Julio Núñez Q.</a>
     </div>
