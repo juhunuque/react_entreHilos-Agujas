@@ -28,7 +28,9 @@ class UsersContainer extends Component{
     this.onClickDataGrid =this.onClickDataGrid.bind(this);
     this.cleanUser =this.cleanUser.bind(this);
     this.deleteUser =this.deleteUser.bind(this);
+    this.addEditUser =this.addEditUser.bind(this);
     this._addNotification = this._addNotification.bind(this);
+    this.activeAddEditForm = this.activeAddEditForm.bind(this);
   }
 
   componentDidMount() {
@@ -52,14 +54,45 @@ class UsersContainer extends Component{
       this.setState({optBarOpt: true});
     });
   }
-  activeAddEditForm(user){
-    this.setState({selectedUser: data},()=>{
+
+  activeAddEditForm(event, user){
+    if(user._id){
+      console.log('USERSI');
+      this.setState({selectedUser: user},()=>{
+        this.setState({addEditOpt: true});
+      });
+    }else{
+      console.log('USERNO');
       this.setState({addEditOpt: true});
-    });
+    }
   }
 
-  editUser(user){
-    console.log('UPDATE');
+  addEditUser(id, user){
+    if(!id){
+      console.log('INSERT');
+      axios.post(`${SERVER_URL}v1/user/`, user)
+      .then((response)=>{
+        this._addNotification(`${user.username} creado!`, 'success', 'Exitoso!');
+        this.cleanUser();
+      })
+      .catch((error)=>{
+        this._addNotification('Error interno.', 'error', 'Error!');
+        this.cleanUser();
+        console.log('Error interno => ',error);
+      });
+    }else{
+      console.log('UPDATE');
+      axios.put(`${SERVER_URL}v1/user/${id}`, user)
+      .then((response)=>{
+        this._addNotification(`Usuario actualizado!`, 'success', 'Exitoso!');
+        this.cleanUser();
+      })
+      .catch((error)=>{
+        this._addNotification('Error interno.', 'error', 'Error!');
+        this.cleanUser();
+        console.log('Error interno => ',error);
+      });
+    }
   }
 
   deleteUser(user){
@@ -79,6 +112,7 @@ class UsersContainer extends Component{
     this.props.fetchUsers();
     this.setState({selectedUser: {}},()=>{
       this.setState({optBarOpt: false});
+      this.setState({addEditOpt: false});
     });
   }
 
@@ -91,6 +125,7 @@ class UsersContainer extends Component{
         lastname: user.lastname,
         username: user.username,
         activo: user.active ? 'Activo' : 'No Activo',
+        active: user.active,
         createdDt: user.createdDt
       };
     });
@@ -112,11 +147,12 @@ class UsersContainer extends Component{
       <div>
         <NotificationSystem ref="notificationSystem" />
         <div className="fixed-action-btn" style={{bottom:'55px',right:'24px'}}>
-          <a className="btn-floating btn-large blue darken-2">
+          <a className="btn-floating btn-large blue darken-2" onClick={this.activeAddEditForm}>
             <i className="large material-icons">add</i>
           </a>
         </div>
-        {this.state.optBarOpt ? <UserForm user={this.state.selectedUser}/> : null}
+        {this.state.addEditOpt ? <UserForm user={this.state.selectedUser}
+        clean={this.cleanUser} addEdit={this.addEditUser}/> : null}
 
         <div className="container z-depth-1">
           <div className="container containerLimits">
@@ -125,7 +161,7 @@ class UsersContainer extends Component{
           </div>
           <div style={{padding: "2%"}}>
             {this.state.optBarOpt ? <UserControlBar user={this.state.selectedUser}
-           delete={this.deleteUser} clean={this.cleanUser} edit={this.editUser}/> : null}
+           delete={this.deleteUser} clean={this.cleanUser} edit={this.activeAddEditForm}/> : null}
 
             <DataGrid idProperty="index" dataSource={currentUsers} columns={this.renderColumns()} pagination={true}
               selected={null} onSelectionChange={this.onClickDataGrid} />

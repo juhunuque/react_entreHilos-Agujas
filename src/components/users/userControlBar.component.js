@@ -6,10 +6,15 @@ export default class UserForm extends Component{
   constructor(props){
     super(props);
     this.deleteUser = this.deleteUser.bind(this);
+    this.editUser = this.editUser.bind(this);
   }
 
   deleteUser(){
     this.props.delete(this.props.user);
+  }
+
+  editUser(event){
+    this.props.edit(event,this.props.user);
   }
 
   render(){
@@ -25,7 +30,7 @@ export default class UserForm extends Component{
 
             <div className="col s6 m6 l6 right-align">
               <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar"
-                onClick={this.props.edit}>
+                onClick={this.editUser}>
                 <i className="material-icons">build</i>
               </a>
               <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar" onClick={this.deleteUser}>
