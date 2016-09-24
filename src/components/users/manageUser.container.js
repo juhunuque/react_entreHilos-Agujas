@@ -57,19 +57,16 @@ class UsersContainer extends Component{
 
   activeAddEditForm(event, user){
     if(user._id){
-      console.log('USERSI');
       this.setState({selectedUser: user},()=>{
         this.setState({addEditOpt: true});
       });
     }else{
-      console.log('USERNO');
       this.setState({addEditOpt: true});
     }
   }
 
   addEditUser(id, user){
     if(!id){
-      console.log('INSERT');
       axios.post(`${SERVER_URL}v1/user/`, user)
       .then((response)=>{
         this._addNotification(`${user.username} creado!`, 'success', 'Exitoso!');
@@ -81,7 +78,6 @@ class UsersContainer extends Component{
         console.log('Error interno => ',error);
       });
     }else{
-      console.log('UPDATE');
       axios.put(`${SERVER_URL}v1/user/${id}`, user)
       .then((response)=>{
         this._addNotification(`Usuario actualizado!`, 'success', 'Exitoso!');
