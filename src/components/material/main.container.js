@@ -20,7 +20,8 @@ class MainContainer extends Component{
       optBarOpt: false,
       addEditOpt: false,
       currentObject: [],
-      objects:[]
+      objects:[],
+      categories: []
       };
 
       this.fetchData = this.fetchData.bind(this);
@@ -30,6 +31,7 @@ class MainContainer extends Component{
       this.delete = this.delete.bind(this);
       this.addEdit = this.addEdit.bind(this);
       this.onClickDataGrid = this.onClickDataGrid.bind(this);
+      this.fetchCategory = this.fetchCategory.bind(this);
   }
 
   componentDidMount() {
@@ -79,6 +81,16 @@ class MainContainer extends Component{
     axios.get(`${SERVER_URL}v1/material/`)
     .then((response)=>{
       this.setState({objects: response.data});
+    })
+    .catch((error)=>{
+      console.log('Error interno => ',error);
+    });
+  }
+
+  fetchCategory(){
+    axios.get(`${SERVER_URL}v1/category/`)
+    .then((response)=>{
+      this.setState({categories: response.data});
     })
     .catch((error)=>{
       console.log('Error interno => ',error);
@@ -146,6 +158,12 @@ class MainContainer extends Component{
     this.setState({selectedObject: data},()=>{
       this.setState({optBarOpt: true});
     });
+  }
+
+  handleChange(event) {
+    var value = event.target.value;
+    console.log(value, " was selected");
+    this.setState({value: event.target.value});
   }
 
   render(){

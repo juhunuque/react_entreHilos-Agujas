@@ -88,7 +88,7 @@ class MainContainer extends Component{
   }
 
   resetPwd(obj){
-    axios.get(`${SERVER_URL}v1/security/${obj._id}`)
+    axios.get(`${SERVER_URL}v1/security/restart/${obj._id}`)
     .then((response)=>{
       this._addNotification(`${obj.username}: Password reiniciado!`, 'success', 'Exitoso!');
       this.clean();
