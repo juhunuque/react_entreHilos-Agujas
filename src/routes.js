@@ -9,6 +9,7 @@ import MaterialContainer from './components/material/main.container';
 import Version from './components/extras/version.component';
 import BackupDb from './components/extras/backupdb.component';
 import ProjectManagement from './components/project/projectManagement.container';
+import CreateProject from './components/createProject/main.container';
 
 
 export default(
@@ -20,6 +21,7 @@ export default(
     <Route path="manageMaterial" component={MaterialContainer} />
     <Route path="version" component={Version} />
     <Route path="settingProjects" component={ProjectManagement} />
+    <Route path="createProject" component={CreateProject} />
     <Route path="backUpDb" component={BackupDb} />
   </Route>
 );

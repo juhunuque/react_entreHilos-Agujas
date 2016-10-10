@@ -40,6 +40,7 @@ class MainContainer extends Component{
 
   componentWillMount(){
     this.fetchData();
+    this.fetchCategory();
   }
 
   _addNotification(message, level, title) {
@@ -88,7 +89,7 @@ class MainContainer extends Component{
   }
 
   fetchCategory(){
-    axios.get(`${SERVER_URL}v1/category/`)
+    axios.get(`${SERVER_URL}v1/catalog/`)
     .then((response)=>{
       this.setState({categories: response.data});
     })
@@ -176,7 +177,7 @@ class MainContainer extends Component{
             </a>
           </div>
           {this.state.addEditOpt ? <AddEditForm object={this.state.selectedObject}
-          clean={this.clean} addEdit={this.addEdit}/> : null}
+          clean={this.clean} addEdit={this.addEdit} categories={this.state.categories}/> : null}
 
           <div className="container z-depth-1">
             <div className="container containerLimits">

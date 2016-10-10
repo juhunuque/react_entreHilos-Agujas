@@ -37,6 +37,7 @@
     "react-notification-system": "^0.2.10",
     "react-redux": "^4.0.0",
     "react-router": "^2.8.1",
+    "react-select": "^1.0.0-rc.2",
     "redux": "^3.0.4",
     "redux-promise": "^0.5.3"
   }
