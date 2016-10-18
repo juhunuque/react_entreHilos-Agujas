@@ -16,7 +16,7 @@ export default class UserForm extends Component{
     this.setState({formTitle:'Nuevo material'})
     if(this.props.object._id){
       this.setState({
-        name: this.props.object.project,
+        project: this.props.object.project,
         description: this.props.object.description,
         formTitle: 'Editar proyecto'
       });
@@ -25,7 +25,7 @@ export default class UserForm extends Component{
 
   addEdit(event){
     const object = {
-      name: this.state.project,
+      project: this.state.project,
       description: this.state.description
     };
     this.props.addEdit(this.props.object._id, object)

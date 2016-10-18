@@ -10,6 +10,7 @@ import Version from './components/extras/version.component';
 import BackupDb from './components/extras/backupdb.component';
 import ProjectManagement from './components/project/projectManagement.container';
 import CreateProject from './components/createProject/main.container';
+import ControlProject from './components/controlProject/main.container';
 
 
 export default(
@@ -22,6 +23,7 @@ export default(
     <Route path="version" component={Version} />
     <Route path="settingProjects" component={ProjectManagement} />
     <Route path="createProject" component={CreateProject} />
+    <Route path="statusProject" component={ControlProject} />
     <Route path="backUpDb" component={BackupDb} />
   </Route>
 );

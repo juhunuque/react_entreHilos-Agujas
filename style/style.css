@@ -47,3 +47,7 @@ header{
  .input-field input[type=text]:focus + label {
    color: #757575;
  }
+
+ .dialog--jss-0-0{
+   width: 600px !important;
+ }
