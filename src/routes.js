@@ -12,6 +12,7 @@ import BackupDb from './components/extras/backupdb.component';
 import ProjectManagement from './components/project/projectManagement.container';
 import CreateProject from './components/createProject/main.container';
 import ControlProject from './components/controlProject/main.container';
+import Roles from './components/userRoles/main.container';
 
 
 export default(
@@ -26,5 +27,6 @@ export default(
     <Route path="createProject" component={CreateProject} />
     <Route path="statusProject" component={ControlProject} />
     <Route path="backUpDb" component={BackupDb} />
+    <Route path="manageRoles" component={Roles} />
   </Route>
 );
