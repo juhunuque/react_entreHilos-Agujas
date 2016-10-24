@@ -13,9 +13,11 @@ import ProjectManagement from './components/project/projectManagement.container'
 import CreateProject from './components/createProject/main.container';
 import ControlProject from './components/controlProject/main.container';
 import Roles from './components/userRoles/main.container';
+import Login from './components/extras/login.component';
 
 
 export default(
+  <div>
   <Route path="/" component={App} >
     <IndexRoute component={Home} />
     <Route path="manageUsers" component={ManageUsers} />
@@ -29,4 +31,7 @@ export default(
     <Route path="backUpDb" component={BackupDb} />
     <Route path="manageRoles" component={Roles} />
   </Route>
+  <Route path="/login" component={Login}></Route>
+  </div>
+
 );
