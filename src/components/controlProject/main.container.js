@@ -97,7 +97,6 @@ class MainContainer extends Component{
   }
 
   renderModal(){
-    console.log('MATERIAL => ', this.state.object.material);
     return(
       <div>
         {

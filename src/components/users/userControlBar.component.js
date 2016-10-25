@@ -33,9 +33,9 @@ export default class UserForm extends Component{
                 onClick={this.editUser}>
                 <i className="material-icons">build</i>
               </a>
-              <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar" onClick={this.deleteUser}>
+              {/* <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar" onClick={this.deleteUser}>
                 <i className="material-icons">delete</i>
-              </a>
+              </a> */}
               <a className="btn-floating btn-large waves-effect waves-light blue darken-2" onClick={this.props.clean}>
                 <i className="material-icons">clear</i>
               </a>

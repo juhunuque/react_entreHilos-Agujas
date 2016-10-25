@@ -10,7 +10,6 @@ import {loginFunction} from './../../actions/user';
 import {SERVER_URL} from './../../actions/user';
 
 class Login extends Component{
-  _notificationSystem: null;
   constructor(props){
     super(props);
     this.state = {
@@ -18,7 +17,8 @@ class Login extends Component{
       user: '',
       password:'',
       password2:'',
-      isLogin: true
+      isLogin: true,
+      errorMsg: false
     };
 
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
@@ -26,14 +26,15 @@ class Login extends Component{
     this.renderLogin = this.renderLogin.bind(this);
     this.renderPasswordConfirm = this.renderPasswordConfirm.bind(this);
     this.clean = this.clean.bind(this);
-    this._addNotification = this._addNotification.bind(this);
   }
+
+
 
   componentDidMount() {
     this._notificationSystem = this.refs.notificationSystem;
   }
 
-  _addNotification(message, level, title){
+  _addNotification(message, level, title) {
     this._notificationSystem.addNotification({
       message: message,
       level: level,
@@ -49,7 +50,7 @@ class Login extends Component{
         // this._addNotification(`Debe cambiar la contraseña`, 'warning', 'Info!');
         this.setState({id: response.data._id, password:'', password2: '', isLogin: false});
       }else{
-        sessionStorage.setItem('authUser', response.data);
+        sessionStorage.setItem('authUser', JSON.stringify(response.data));
         this.props.loginFunction(response.data);
         this.clean();
         // this._addNotification(`Bienvenido ${response.data.username}!`, 'success', 'Exitoso!');
@@ -59,6 +60,7 @@ class Login extends Component{
     .catch((error)=>{
       // this._addNotification('Error interno.', 'error', 'Error!');
       this.clean();
+      this.setState({errorMsg: true});
       console.log('Error interno => ',error);
     });
   }
@@ -68,6 +70,7 @@ class Login extends Component{
     if(this.state.password != this.state.password2){
       // this._addNotification(`Las contraseñas no coinciden!`, 'error', 'Error!');
       this.setState({password:'', password2:''});
+      this.setState({errorMsg: true});
       return;
     }
     axios.post(`${SERVER_URL}v1/security/${this.state.id}`, {password: this.state.password})
@@ -83,7 +86,7 @@ class Login extends Component{
   }
 
   clean(){
-    this.setState({user:'',password:'', password2:'', isLogin: true});
+    this.setState({user:'',password:'', password2:'', isLogin: true, errorMsg: false});
   }
 
   renderLogin(){
@@ -92,6 +95,8 @@ class Login extends Component{
         <div className="container">
           <div className="row">
             <div className="offset-l3 col s12 m6 l6 z-depth-6 card-panel">
+              {this.state.errorMsg &&
+              <h5 className="center-align">Usuario invalido!</h5>}
               <form onSubmit={this.handleLoginSubmit}>
                 <div className="row">
                   <div className="input-field col s12">
@@ -133,6 +138,8 @@ class Login extends Component{
               <form onSubmit={this.handlePasswordSubmit}>
                 <div className="row center-align">
                   <h5>Debe introducir un nuevo password</h5>
+                  {this.state.errorMsg &&
+                  <h5 className="center-align">Contraseñas no coinciden</h5>}
                 </div>
                 <div className="row">
                   <div className="input-field col s12">

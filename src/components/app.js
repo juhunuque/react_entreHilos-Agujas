@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentWillMount(){
-    let user = sessionStorage.getItem('authUser');
+    let user = JSON.parse(sessionStorage.getItem('authUser'));
     if(user != null){
       this.props.loginFunction(user);
       return;
@@ -31,13 +31,13 @@ class App extends Component {
   logout(){
     sessionStorage.removeItem('authUser');
     this.props.logout();
-    browserHistory.push('/login');
+    window.location.replace("/login");
   }
 
   render() {
     return (
       <div>
-        <Header isAuth={true} logout={this.logout}/>
+        <Header isAuth={true} logout={this.logout} user={this.props.users.loginUser}/>
         {this.props.children}
       </div>
     );

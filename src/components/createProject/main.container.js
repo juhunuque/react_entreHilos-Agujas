@@ -17,7 +17,8 @@ class MainContainer extends Component{
       quantity:'',
       objects: [],
       materials: [],
-      isMaterialsActive: false
+      isMaterialsActive: false,
+      user: null
     };
     this.closeMaterialForm = this.closeMaterialForm.bind(this);
     this.addMaterial = this.addMaterial.bind(this);
@@ -33,6 +34,7 @@ class MainContainer extends Component{
   }
 
   componentWillMount(){
+    this.setState({user: JSON.parse(sessionStorage.getItem('authUser'))})
     this.fetchData();
   }
 
@@ -93,7 +95,7 @@ class MainContainer extends Component{
       description: this.state.description,
       // material: JSON.stringify(this.state.materials),
       material: this.state.materials,
-      createdBy:'JULIOCHANGE',
+      createdBy:this.state.user.username,
       quantity:this.state.quantity
     };
     axios.post(`${SERVER_URL}v1/project/`, object)

@@ -1,6 +1,22 @@
 import React, {Component, PropTypes} from 'react';
 
 export default class Header extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      user: null,
+      roles: new Set()
+    }
+  }
+
+  componentWillMount(){
+    this.setState({user: JSON.parse(sessionStorage.getItem('authUser'))},()=>{
+      if(this.state.user != null){
+        this.setState({roles: new Set(JSON.parse(sessionStorage.getItem('authUser')).roles)});
+      }
+    })
+  }
+
   renderAuthHeader(){
     return(
       <div>
@@ -28,8 +44,8 @@ export default class Header extends Component{
           </ul>
 
           <ul id="dropdownHelp" className="dropdown-content">
-            <li><a href="/changePassword" className="black-text">Cambiar Contraseña</a></li>
-            <li className="divider"></li>
+            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/changePassword" className="black-text">Cambiar Contraseña</a></li>}
+            {this.state.roles.has('ADMINISTRADOR') && <li className="divider"></li>}
             <li><a href="/version" className="black-text">Version</a></li>
             <li className="divider"></li>
             <li><a href="/userDocumentation" className="black-text">Manual de Usuario</a></li>
@@ -39,6 +55,10 @@ export default class Header extends Component{
             <li><a href="#/reportMaterials" className="black-text">Materiales</a></li>
             <li className="divider"></li>
             <li><a href="#/reportProjects" className="black-text">Proyectos</a></li>
+          </ul>
+
+          <ul id="dropdownActiveUser" className="dropdown-content">
+            <li><a href="" onClick={this.props.logout} className="black-text">Salir</a></li>
           </ul>
 
           <nav className="blue" role="navigation">
@@ -53,13 +73,14 @@ export default class Header extends Component{
                   data-activates="dropdownMaterials" href="">Materiales</a></li>
                 <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
                   data-activates="dropdownProjects" href="">Proyectos</a></li>
-                <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
-                  data-activates="dropdownSecurity" href="">Seguridad</a></li>
+                {this.state.roles.has('ADMINISTRADOR') && <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+                  data-activates="dropdownSecurity" href="">Seguridad</a></li>}
                 <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
                   data-activates="dropdownHelp" href="">Ayuda</a></li>
                 <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
                   data-activates="dropdownReports" href="">Listado</a></li>
-                <li><a href="" onClick={this.props.logout}>Salir</a></li>
+                  <li><a className="dropdown-button" data-beloworigin="true" data-hover="true" data-constrainwidth="false"
+                    data-activates="dropdownActiveUser" href="">{this.props.user != null && this.props.user.username}</a></li>
               </ul>
 
               <ul id="nav-mobile" className="side-nav">
