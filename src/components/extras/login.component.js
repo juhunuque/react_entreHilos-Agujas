@@ -15,6 +15,7 @@ class Login extends Component{
     this.state = {
       id: '',
       user: '',
+      oldPassword:'',
       password:'',
       password2:'',
       isLogin: true,
@@ -73,7 +74,11 @@ class Login extends Component{
       this.setState({errorMsg: true});
       return;
     }
-    axios.post(`${SERVER_URL}v1/security/${this.state.id}`, {password: this.state.password})
+    axios.post(`${SERVER_URL}v1/security/${this.state.id}`, {
+      password: this.state.password,
+      isChanging: true,
+      oldPassword: this.state.oldPassword
+    })
     .then((response)=>{
       // this._addNotification(`Contraseña actualizada correctamente!`, 'success', 'Exitoso!');
       this.clean();
@@ -86,7 +91,7 @@ class Login extends Component{
   }
 
   clean(){
-    this.setState({user:'',password:'', password2:'', isLogin: true, errorMsg: false});
+    this.setState({user:'',password:'', password2:'', oldPassword: '', isLogin: true, errorMsg: false});
   }
 
   renderLogin(){
@@ -140,6 +145,13 @@ class Login extends Component{
                   <h5>Debe introducir un nuevo password</h5>
                   {this.state.errorMsg &&
                   <h5 className="center-align">Contraseñas no coinciden</h5>}
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input className="validate" id="oldPassword" type="password" value={this.state.oldPassword}
+                    onChange={event => this.setState({oldPassword: event.target.value})} required/>
+                    <label htmlFor="oldPassword">Password anterior</label>
+                  </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12">

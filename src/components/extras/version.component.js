@@ -16,8 +16,11 @@ export default class VersionMain extends Component{
                   <div className="card-content">
                     <p><span style={{fontWeight:'bold'}}>Version: </span>1.0.1</p>
                     <p><span style={{fontWeight:'bold'}}>Desarrollador: </span>Julio Núñez Q</p>
+                    <p><span style={{fontWeight:'bold'}}>Backend: </span>ExpressJs</p>
+                    <p><span style={{fontWeight:'bold'}}>Frontend: </span>ReactJs</p>
+                    <p><span style={{fontWeight:'bold'}}>Base de datos: </span>MongoDB</p>
+                    <p><span style={{fontWeight:'bold'}}>Cloud Host: </span>AWS</p>
                   </div>
-
                 </div>
               </div>
             </div>

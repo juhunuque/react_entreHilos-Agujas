@@ -7,6 +7,7 @@ export default class Header extends Component{
       user: null,
       roles: new Set()
     }
+    this.reset = this.reset.bind(this);
   }
 
   componentWillMount(){
@@ -15,6 +16,12 @@ export default class Header extends Component{
         this.setState({roles: new Set(JSON.parse(sessionStorage.getItem('authUser')).roles)});
       }
     })
+  }
+
+  reset(e){
+    e.preventDefault();
+    this.props.reset(this.props.user);
+    this.props.logout();
   }
 
   renderAuthHeader(){
@@ -58,6 +65,7 @@ export default class Header extends Component{
           </ul>
 
           <ul id="dropdownActiveUser" className="dropdown-content">
+            <li><a href="" onClick={this.reset} className="black-text">Reiniciar contraseña</a></li>
             <li><a href="" onClick={this.props.logout} className="black-text">Salir</a></li>
           </ul>
 
