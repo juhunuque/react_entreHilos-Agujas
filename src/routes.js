@@ -14,6 +14,8 @@ import CreateProject from './components/createProject/main.container';
 import ControlProject from './components/controlProject/main.container';
 import Roles from './components/userRoles/main.container';
 import Login from './components/extras/login.component';
+import ReportMaterial from './components/reports/material.report.component';
+import ReportProject from './components/reports/project.report.component';
 
 
 export default(
@@ -30,6 +32,8 @@ export default(
     <Route path="statusProject" component={ControlProject} />
     <Route path="backUpDb" component={BackupDb} />
     <Route path="manageRoles" component={Roles} />
+    <Route path="reportMaterials" component={ReportMaterial} />
+    <Route path="reportProjects" component={ReportProject} />
   </Route>
   <Route path="/login" component={Login}></Route>
   </div>

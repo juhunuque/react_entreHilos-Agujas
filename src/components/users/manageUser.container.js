@@ -22,7 +22,8 @@ class UsersContainer extends Component{
       selectedUser: {},
       optBarOpt: false,
       addEditOpt: false,
-      currentUsers: []
+      currentUsers: [],
+      users: []
       };
 
     this.onClickDataGrid =this.onClickDataGrid.bind(this);
@@ -137,6 +138,7 @@ class UsersContainer extends Component{
     ]
   }
 
+
   render(){
     const currentUsers = this.renderData();
     return(
@@ -160,7 +162,7 @@ class UsersContainer extends Component{
            delete={this.deleteUser} clean={this.cleanUser} edit={this.activeAddEditForm}/> : null}
 
             <DataGrid idProperty="index" dataSource={currentUsers} columns={this.renderColumns()} pagination={true}
-              selected={null} onSelectionChange={this.onClickDataGrid} />
+              selected={null} onSelectionChange={this.onClickDataGrid}/>
           </div>
         </div>
       </div>

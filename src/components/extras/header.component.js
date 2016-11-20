@@ -52,9 +52,9 @@ export default class Header extends Component{
           </ul>
 
           <ul id="dropdownReports" className="dropdown-content">
-            <li><a href="#/reportMaterials" className="black-text">Materiales</a></li>
+            <li><a href="/reportMaterials" className="black-text">Materiales</a></li>
             <li className="divider"></li>
-            <li><a href="#/reportProjects" className="black-text">Proyectos</a></li>
+            <li><a href="/reportProjects" className="black-text">Proyectos</a></li>
           </ul>
 
           <ul id="dropdownActiveUser" className="dropdown-content">
