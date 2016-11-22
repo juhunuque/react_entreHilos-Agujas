@@ -22,19 +22,28 @@ class MainContainer extends Component{
       options:[
         {value:'CREADO', label:'CREADO'},
         {value:'EN PROCESO', label: 'EN PROCESO'},
-        {value: 'EN PAUSA', label: 'EN PAUSA'}
+        {value: 'EN PAUSA', label: 'EN PAUSA'},
+        {value: 'FINALIZADO', label: 'FINALIZADO'}
       ],
-      option: []
+      option: [],
+      user: null,
+      roles: new Set()
     };
     this.fetchData = this.fetchData.bind(this);
     this.renderProjects = this.renderProjects.bind(this);
     this.showDetails = this.showDetails.bind(this);
     this.renderModal = this.renderModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.generateReport = this.generateReport.bind(this);
   }
 
   componentWillMount(){
     this.fetchData();
+    this.setState({user: JSON.parse(sessionStorage.getItem('authUser'))},()=>{
+      if(this.state.user != null){
+        this.setState({roles: new Set(JSON.parse(sessionStorage.getItem('authUser')).roles)});
+      }
+    })
   }
 
   componentDidMount() {
@@ -82,6 +91,7 @@ class MainContainer extends Component{
     this.setState({object:object, option:{value:object.status, label:object.status}},()=>{
       this.setState({detailsIsOpen:true});
     });
+
   }
 
   renderProjects(){
@@ -94,6 +104,18 @@ class MainContainer extends Component{
 
   formatDate(date){
     return moment(date).format('DD/MM/YY')
+  }
+
+  generateReport(){
+    axios.get(`${SERVER_URL}v1/project/report/requirements?id=${this.state.object._id}&username=${this.state.user.username}`)
+    .then((response)=>{
+      document.location.assign(`${SERVER_URL}v1/project/report/requirements?id=${this.state.object._id}&username=${this.state.user.username}`);
+      this._addNotification('Reporte generado', 'success', 'Exitoso!');
+    })
+    .catch((error)=>{
+      console.log('Error interno => ',error);
+      this._addNotification('Error interno.', 'error', 'Error!');
+    });
   }
 
   renderModal(){
@@ -115,7 +137,13 @@ class MainContainer extends Component{
                 </div>
               </div>
               <div className="row center-align">
+                <a className="waves-effect waves-light btn blue darken-2" onClick={this.generateReport}>
+                  <i className="material-icons right">print</i>Reporte
+                </a>
+              </div>
+              <div className="row center-align">
                 <div className="input-field offset-l3 col m6 l6">
+                  {this.state.roles.has('ADMINISTRADOR') &&  this.state.object.status != 'FINALIZADO'?
                   <Select
                       name="form-field-name"
                       value={this.state.option.value}
@@ -123,8 +151,12 @@ class MainContainer extends Component{
                       onChange={this.handleChange}
                       placeholder="Estado"
                   />
+                  :
+                  <h6>{this.state.option.value}</h6>
+                  }
                 </div>
               </div>
+
               <div className="divider"></div>
               <div className="row">
                 <p>{this.state.object.description}</p>

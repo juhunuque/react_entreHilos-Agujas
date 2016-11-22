@@ -29,16 +29,16 @@ export default class Header extends Component{
       <div>
         <header>
           <ul id="dropdownProjects" className="dropdown-content">
-            <li><a href="/createProject" className="black-text">Creacion de Proyectos</a></li>
-            <li className="divider"></li>
+            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/createProject" className="black-text">Creacion de Proyectos</a></li>}
+            {this.state.roles.has('ADMINISTRADOR') &&<li className="divider"></li>}
             <li><a href="/statusProject" className="black-text">Control de Proyectos</a></li>
             <li className="divider"></li>
-            <li><a href="/settingProjects" className="black-text">Mantenimiento Proyecto</a></li>
+            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/settingProjects" className="black-text">Mantenimiento Proyecto</a></li>}
           </ul>
 
           <ul id="dropdownMaterials" className="dropdown-content">
-            <li><a href="/manageKindMaterial" className="black-text">Tipo material</a></li>
-            <li className="divider"></li>
+            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/manageKindMaterial" className="black-text">Tipo material</a></li>}
+            {this.state.roles.has('ADMINISTRADOR') && <li className="divider"></li>}
             <li><a href="/manageMaterial" className="black-text">Material</a></li>
           </ul>
 

@@ -31,9 +31,9 @@ export default class ControlBar extends Component{
                 onClick={this.edit}>
                 <i className="material-icons">build</i>
               </a>
-              <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar" onClick={this.delete}>
+              {this.props.object.status != 'FINALIZADO' && <a className="btn-floating btn-large waves-effect waves-light blue darken-2 button-user-control-bar" onClick={this.delete}>
                 <i className="material-icons">delete</i>
-              </a>
+              </a>}
               <a className="btn-floating btn-large waves-effect waves-light blue darken-2" onClick={this.props.clean}>
                 <i className="material-icons">clear</i>
               </a>
