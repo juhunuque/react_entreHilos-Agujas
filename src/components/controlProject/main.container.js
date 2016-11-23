@@ -142,7 +142,7 @@ class MainContainer extends Component{
                 </a>
               </div>
               <div className="row center-align">
-                <div className="input-field offset-l3 col m6 l6">
+                <div className="input-field col m6 l6">
                   {this.state.roles.has('ADMINISTRADOR') &&  this.state.object.status != 'FINALIZADO'?
                   <Select
                       name="form-field-name"
@@ -154,6 +154,9 @@ class MainContainer extends Component{
                   :
                   <h6>{this.state.option.value}</h6>
                   }
+                </div>
+                <div className="input-field col m6 l6">
+                  # de piezas: {this.state.object.quantity}
                 </div>
               </div>
 
