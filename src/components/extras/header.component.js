@@ -29,7 +29,7 @@ export default class Header extends Component{
       <div>
         <header>
           <ul id="dropdownProjects" className="dropdown-content">
-            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/createProject" className="black-text">Creacion de Proyectos</a></li>}
+            {this.state.roles.has('ADMINISTRADOR') && <li><a href="/createProject" className="black-text">Creación de Proyectos</a></li>}
             {this.state.roles.has('ADMINISTRADOR') &&<li className="divider"></li>}
             <li><a href="/statusProject" className="black-text">Control de Proyectos</a></li>
             <li className="divider"></li>
@@ -45,7 +45,7 @@ export default class Header extends Component{
           <ul id="dropdownSecurity" className="dropdown-content">
             <li><a href="/manageUsers" className="black-text">Mantenimiento Usuarios</a></li>
             <li className="divider"></li>
-            <li><a href="/manageRoles" className="black-text">Asignacion Roles</a></li>
+            <li><a href="/manageRoles" className="black-text">Asignación Roles</a></li>
             <li className="divider"></li>
             <li><a href="/backUpDb" className="black-text">Backup DB</a></li>
           </ul>
@@ -53,7 +53,7 @@ export default class Header extends Component{
           <ul id="dropdownHelp" className="dropdown-content">
             {this.state.roles.has('ADMINISTRADOR') && <li><a href="/changePassword" className="black-text">Cambiar Contraseña</a></li>}
             {this.state.roles.has('ADMINISTRADOR') && <li className="divider"></li>}
-            <li><a href="/version" className="black-text">Version</a></li>
+            <li><a href="/version" className="black-text">Versión</a></li>
             <li className="divider"></li>
             <li><a href="/userDocumentation" className="black-text">Manual de Usuario</a></li>
           </ul>

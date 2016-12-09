@@ -125,7 +125,7 @@ class KindMaterialContainer extends Component{
     return [
       { name: 'index', title: '#', width: 50},
       { name: 'type', title: 'Tipo'},
-      { name: 'description', title: 'Descripcion'}
+      { name: 'description', title: 'Descripción'}
     ]
   }
 

@@ -137,7 +137,7 @@ class MainContainer extends Component{
                       <textarea id="description" className="materialize-textarea validate"
                          value={this.state.description}
                         onChange={(event)=>this.setState({description: event.target.value})} required></textarea>
-                      <label className={this.state.description ? 'active':''} htmlFor="description">Descripcion</label>
+                      <label className={this.state.description ? 'active':''} htmlFor="description">Descripción</label>
                   </div>
                 </div>
 

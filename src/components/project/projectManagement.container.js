@@ -84,7 +84,7 @@ class MainContainer extends Component{
     return [
       { name: 'index', title: '#', width: 50},
       { name: 'project', title: 'Proyecto'},
-      { name: 'description', title: 'Descripcion'},
+      { name: 'description', title: 'Descripción'},
       { name: 'createdDt', title: 'Creado'},
       { name: 'createdBy', title: 'Autor'},
       { name: 'status', title: 'Status'}

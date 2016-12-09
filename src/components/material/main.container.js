@@ -55,8 +55,8 @@ class MainContainer extends Component{
     return [
       { name: 'index', title: '#', width: 50},
       { name: 'name', title: 'Material'},
-      { name: 'description', title: 'Descripcion'},
-      { name: 'category', title: 'Categoria'},
+      { name: 'description', title: 'Descripción'},
+      { name: 'category', title: 'Categoría'},
       { name: 'quantity', title: 'Cantidad'},
       { name: 'measure', title: 'Medida'},
       { name: 'holdQty', title: 'En espera...'}

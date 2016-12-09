@@ -14,7 +14,7 @@ export default class VersionMain extends Component{
                 </div>
                 <div className="card-stacked">
                   <div className="card-content">
-                    <p><span style={{fontWeight:'bold'}}>Version: </span>1.0.1</p>
+                    <p><span style={{fontWeight:'bold'}}>Versión: </span>1.0.1</p>
                     <p><span style={{fontWeight:'bold'}}>Desarrollador: </span>Julio Núñez Q</p>
                     <p><span style={{fontWeight:'bold'}}>Backend: </span>ExpressJs</p>
                     <p><span style={{fontWeight:'bold'}}>Frontend: </span>ReactJs</p>
